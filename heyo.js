@@ -11,10 +11,10 @@ fs.readFile(configFile, { encoding: 'utf-8' }, function(err, data) {
 
   console.log('');
   if (args.length === 0) {
-    console.log('Usage: sendyo <command>\n');
-    console.log('sendyo register <username>  registers <username> on Yo');
-    console.log('sendyo <username>           sends Yo to <username>');
-    console.log('sendyo switch <username>    switches to send from <username>');
+    console.log('Usage: heyo <command>\n');
+    console.log('heyo register <username>  registers <username> on Yo');
+    console.log('heyo <username>           sends Yo to <username>');
+    console.log('heyo switch <username>    switches to send from <username>');
     console.log('');
   } else if (args.length === 1) {
     // sending Yo
@@ -23,7 +23,7 @@ fs.readFile(configFile, { encoding: 'utf-8' }, function(err, data) {
       sendTo = args[0];
 
     if (username.length === 0) {
-      return console.log('you must register a user first: sendyo register <username>');
+      return console.log('you must register a user first: heyo register <username>');
     }
 
     yoplait.existingUser(username, udid, function(err, yoUser) {

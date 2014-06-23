@@ -1,2 +1,2 @@
 make_binary:
-	cp ./sayo.js ./bin/sayo
+	cp ./heyo.js ./bin/heyo

@@ -1,4 +1,4 @@
-sayo - CLI for sending Yo notifications
+heyo - CLI for sending Yo notifications
 ====
 
-sayo lets you send Yo notifications in the command line.
+heyo lets you send Yo notifications in the command line.
