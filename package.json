@@ -1,0 +1,10 @@
+{
+  "name": "sayo",
+  "version": "0.0.1",
+  "description": "CLI for sending Yo notifications",
+  "author": "Drew Blaisdell",
+  "repository": "drewblaisdell/sayo",
+  "dependencies": {
+    "yoplait": "0.1.2"
+  }
+}
