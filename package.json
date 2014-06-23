@@ -1,6 +1,6 @@
 {
   "name": "heyo",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "CLI for sending Yo notifications",
   "license": "MIT",
   "bin": {
