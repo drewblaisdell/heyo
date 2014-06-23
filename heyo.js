@@ -9,36 +9,42 @@ var configFile = path.join(__dirname, './config.json');
 fs.readFile(configFile, { encoding: 'utf-8' }, function(err, data) {
   var config = JSON.parse(data);
 
-  console.log('');
   if (args.length === 0) {
     console.log('Usage: heyo <command>\n');
     console.log('heyo register <username>  registers <username> on Yo');
     console.log('heyo <username>           sends Yo to <username>');
+    console.log('heyo list                 lists usernames stored in heyo');
     console.log('heyo switch <username>    switches to send from <username>');
     console.log('');
   } else if (args.length === 1) {
-    // sending Yo
-    var username = config.username,
-      udid = config.udid,
-      sendTo = args[0];
+    if (args[0] === 'list') {
+      config.users.forEach(function(n) {
+        console.log(n.username);
+      });
+    } else {
+      // sending Yo
+      var username = config.username,
+        udid = config.udid,
+        sendTo = args[0];
 
-    if (username.length === 0) {
-      return console.log('you must register a user first: heyo register <username>');
-    }
-
-    yoplait.existingUser(username, udid, function(err, yoUser) {
-      if (err) {
-        return console.log('error logging in: ', err);
+      if (username.length === 0) {
+        return console.log('you must register a user first: heyo register <username>');
       }
 
-      yoUser.sendYo(sendTo.toUpperCase(), function(err) {
+      yoplait.existingUser(username, udid, function(err, yoUser) {
         if (err) {
-          return console.log('error sending yo: ', err);
+          return console.log('error logging in: ', err);
         }
 
-        return console.log('sent a Yo to '+ sendTo);
+        yoUser.sendYo(sendTo.toUpperCase(), function(err) {
+          if (err) {
+            return console.log('error sending yo: ', err);
+          }
+
+          return console.log('sent a Yo to '+ sendTo);
+        });
       });
-    });
+    }
   } else if (args.length === 2) {
     if (args[0] === 'register') {
       // attempt to register username with a random UDID

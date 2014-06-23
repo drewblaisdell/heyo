@@ -2,6 +2,10 @@
   "name": "heyo",
   "version": "0.0.1",
   "description": "CLI for sending Yo notifications",
+  "license": "MIT",
+  "bin": {
+    "heyo": "heyo.js"
+  },
   "author": "Drew Blaisdell",
   "repository": "drewblaisdell/heyo",
   "dependencies": {
