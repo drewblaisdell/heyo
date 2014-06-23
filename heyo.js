@@ -6,6 +6,16 @@ var fs = require('fs'),
 
 var configFile = path.join(__dirname, './config.json');
 
+if (!fs.existsSync(configFile)) {
+  var emptyConfig = {
+    username: "",
+    udid: "",
+    users: []
+  };
+
+  fs.writeFileSync(configFile, JSON.stringify(emptyConfig));
+}
+
 fs.readFile(configFile, { encoding: 'utf-8' }, function(err, data) {
   var config = JSON.parse(data);
 
@@ -18,6 +28,10 @@ fs.readFile(configFile, { encoding: 'utf-8' }, function(err, data) {
     console.log('');
   } else if (args.length === 1) {
     if (args[0] === 'list') {
+      if (config.users.length === 0) {
+        return console.log('you have not registered any users in heyo yet');
+      }
+
       config.users.forEach(function(n) {
         console.log(n.username);
       });
